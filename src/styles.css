@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap');
+
+:root { font-family: 'Baloo 2', system-ui, sans-serif; color: white; background: #101424; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; overflow: hidden; }
+button, input { font: inherit; }
+button { border: 0; cursor: pointer; }
+.stage-shell { width: 100vw; height: 100vh; display: grid; place-items: center; background: #111526; }
+.stage { position: relative; aspect-ratio: 16 / 9; width: min(100vw, 177.7778vh); height: min(100vh, 56.25vw); overflow: hidden; container-type: inline-size; }
+.cover { background: #203cb6; }
+.cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.space { background: #304ec2 url('https://www.figma.com/api/mcp/asset/777d9499-681c-4b12-bc52-251fb77d95e9') center/cover no-repeat; }
+.icon-button { width: 3.55cqw; height: 3.55cqw; border-radius: .37cqw; background: rgba(255,255,255,.92); color: #4153b6; display: grid; place-items: center; font-size: 2.1cqw; font-weight: 700; line-height: 1; box-shadow: 0 .15cqw .35cqw rgba(0,0,0,.16); transition: transform .15s, filter .15s; }
+.cover > .icon-button { position: absolute; right: 6.25%; top: 7.4%; }
+.icon-button:hover, .primary:hover, .play:hover { transform: translateY(-.15cqw); filter: brightness(1.06); }
+.icon-button:focus-visible, .primary:focus-visible, .play:focus-visible, .avatar:focus-visible, input:focus-visible { outline: .2cqw solid #ffff63; outline-offset: .18cqw; }
+.play { position: absolute; left: 45.45%; top: 41.67%; width: 9%; aspect-ratio: 1; border-radius: 1cqw; background: white; color: #4153b6; display: grid; place-items: center; box-shadow: 0 .4cqw 1.2cqw rgba(0,0,0,.18); }
+.play span { font-family: Arial, sans-serif; font-size: 6cqw; line-height: 1; margin-left: .35cqw; }
+.toolbar { position: absolute; z-index: 3; inset: 7.4% 6.25% auto; display: flex; gap: 1.1cqw; }
+.toolbar .spacer { flex: 1; }
+.avatar-panel { position: absolute; top: 17.5%; left: 6.25%; width: 25.2%; height: 61.8%; padding: 3.8cqw 1.8cqw 1.6cqw; border-radius: .55cqw; background: #8675c8; }
+.avatar-panel h2 { position: absolute; top: .25cqw; left: 0; right: 0; margin: 0; text-align: center; font-size: 2.08cqw; font-weight: 500; }
+.avatar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75cqw 1.1cqw; height: 100%; }
+.avatar { position: relative; overflow: hidden; min-height: 0; border-radius: .55cqw; border: .1cqw solid rgba(0,0,0,.25); box-shadow: .2cqw .2cqw .12cqw rgba(0,0,0,.2); transition: transform .15s, box-shadow .15s; }
+.avatar:nth-child(1) { background: #ffff63; }.avatar:nth-child(2) { background: #feb7f3; }.avatar:nth-child(3) { background: #7758a6; }.avatar:nth-child(4) { background: #bcffb8; }.avatar:nth-child(5) { background: #75fdf1; }.avatar:nth-child(6) { background: #f98940; }
+.avatar img { position: absolute; width: 122%; height: 275%; object-fit: cover; object-position: top center; left: -9%; top: -4%; }
+.avatar:hover { transform: scale(1.025); }
+.avatar.selected { box-shadow: 0 0 0 .28cqw white, 0 0 0 .48cqw #ffff63, .2cqw .2cqw .2cqw rgba(0,0,0,.3); }
+.name-row { position: absolute; left: 34.3%; top: 81.9%; width: 38.55%; display: grid; grid-template-columns: auto 1fr auto; gap: .75cqw; align-items: center; }
+.name-row label { font-size: 2.08cqw; font-weight: 500; }
+.name-row input { height: 2.5cqw; background: white; border: .13cqw solid #d8d8d8; padding: .1cqw .65cqw; color: #263276; font-size: 1.5cqw; }
+.dice { color: #f4862c; background: transparent; font-size: 2cqw; }
+.primary { min-width: 12.86cqw; height: 4.63cqw; border-radius: .55cqw; background: white; color: #3c4eb0; font-size: 2.08cqw; font-weight: 500; box-shadow: 0 .15cqw .35cqw rgba(0,0,0,.16); }
+.next { position: absolute; right: 7.4%; bottom: 7.3%; }
+.tutorial { position: absolute; z-index: 2; inset: 0; background: rgba(25,27,38,.88); display: flex; flex-direction: column; align-items: center; text-align: center; }
+.tutorial h1 { margin: 14.3cqw 0 1.1cqw; font-size: 5cqw; line-height: 1; }
+.tutorial p { margin: 0; font-size: 2.5cqw; line-height: 1.25; font-weight: 600; }
+.tutorial b { font-size: 2.08cqw; }
+.tutorial-next { position: absolute; right: 7.4%; bottom: 7.3%; }
+.ready-screen { position: absolute; inset: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.ready-screen h1 { margin: 9.7cqw 0 0; font-size: 2.8cqw; line-height: 1; }
+.ready-screen strong { color: #ffff63; font-size: 2.3cqw; }
+.ready-screen img { width: 38%; height: 52%; object-fit: contain; margin-top: .5cqw; }
+.lets-go { position: absolute; right: 7.4%; bottom: 7.3%; }
+.cutscene { background: #000; }
+.cutscene-skip { position: absolute; inset: 0; width: 100%; height: 100%; background: #000; color: rgba(255,255,255,.72); }
+.cutscene-skip span { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); font-size: 1.15cqw; opacity: 0; animation: reveal 1s 1.5s forwards; }
+@keyframes reveal { to { opacity: 1; } }
+.friendship { background: #2c4bc0; }
+.friendship-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.friendship-toolbar { z-index: 4; }
+.profile-orbit { position: absolute; z-index: 4; left: 6.6%; top: 8.1%; width: 8.2cqw; height: 8.2cqw; }
+.profile-orbit > img { position: absolute; left: 0; top: 0; width: 5.75cqw; height: 5.75cqw; border-radius: 50%; object-fit: cover; object-position: top; background: white; border: .18cqw solid white; }
+.profile-orbit i { position: absolute; width: 1.35cqw; height: 1.35cqw; border-radius: 50%; background: #77c659; }
+.profile-orbit i:nth-of-type(1) { right: .4cqw; top: 1.9cqw; }.profile-orbit i:nth-of-type(2) { left: 1.15cqw; bottom: 0; background: #d6a0da; }.profile-orbit i:nth-of-type(3) { right: 1.05cqw; bottom: .6cqw; background: #f5a24d; }
+.whoami-intro { position: absolute; inset: 0; text-align: center; }
+.whoami-intro h1 { position: absolute; top: 37.8%; left: 27.6%; width: 44.8%; margin: 0; color: white; font-family: 'Fredoka One', 'Baloo 2', sans-serif; font-size: 5cqw; letter-spacing: .25cqw; }
+.whoami-intro > img { position: absolute; left: 10.3%; bottom: 4.9%; width: 14%; height: 38.8%; object-fit: cover; object-position: 33% 28%; }
+.whoami-next { position: absolute; right: 6.25%; bottom: 7.5%; }
+.quality-game { position: absolute; inset: 0; text-align: center; }
+.quality-game h1 { position: absolute; top: 29.9%; left: 15.6%; width: 68.8%; margin: 0; font-size: 2.5cqw; line-height: 1.28; font-weight: 500; }
+.quality-cards { position: absolute; left: 23.2%; top: 48.5%; width: 53.7%; height: 37%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.6cqw; }
+.quality-card { position: relative; min-width: 0; border-radius: .78cqw; background: #dca1c8; border: .08cqw solid #c478ab; color: white; overflow: hidden; transition: transform .16s, box-shadow .16s; }
+.quality-card:hover { transform: translateY(-.3cqw); }
+.quality-card.selected { box-shadow: 0 0 0 .28cqw white, 0 0 0 .5cqw #ffff63; }
+.quality-card img { position: absolute; left: 10%; top: 2%; width: 80%; height: 75%; object-fit: contain; }
+.quality-card span { position: absolute; left: 0; right: 0; bottom: 5%; font-size: 2.08cqw; }
+.quality-feedback { position: absolute; left: 25%; right: 25%; bottom: 2%; margin: 0; font-size: 1.55cqw; font-weight: 600; color: #ffff63; }
+.game-continue { position: absolute; right: 6.25%; bottom: 6%; z-index: 6; }
+.scene-transition { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; background: #2848ba; }
+.scene-transition img, .planet-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene-transition span { position: absolute; right: 4%; bottom: 4%; color: white; font-size: 1.3cqw; text-shadow: 0 .1cqw .3cqw #000; }
+.planet-title { position: absolute; left: 24%; right: 24%; top: 39%; margin: 0; text-align: center; font-family: 'Fredoka One', 'Baloo 2', sans-serif; font-size: 5cqw; line-height: 1.05; letter-spacing: .12cqw; }
+.game-profile { left: 6.6%; top: 8.1%; }
+.planet-bg.dim { filter: brightness(.68); }
+.message-game { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding-top: 42%; }
+.symbol-row { position: absolute; left: 12%; right: 12%; top: 42%; height: 14%; display: grid; grid-template-columns: repeat(7,1fr); gap: 2.5cqw; padding: 1cqw 2.3cqw; background: #fff8dc; border-radius: 45% 35% 42% 32%; }
+.symbol-row img { width: 100%; height: 100%; object-fit: contain; }
+.message-game input { position: absolute; top: 65.5%; width: 64%; height: 6.2cqw; border: 0; background: transparent; color: white; text-align: center; font: 700 4.6cqw monospace; letter-spacing: 2.1cqw; text-shadow: 0 .12cqw .15cqw #333; }
+.message-game input::placeholder { color: white; opacity: 1; }
+.message-game p { position: absolute; top: 78%; font-size: 1.45cqw; }
+.memory-bg { object-fit: cover; }
+.memory-grid { position: absolute; left: 22%; right: 22%; top: 15%; bottom: 8%; padding: 2.4cqw; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1cqw; background: rgba(245,245,245,.75); border: .22cqw solid #222; border-radius: 1.2cqw; }
+.memory-card { border-radius: .55cqw; background: #35b84d; color: white; border: .08cqw solid #278c39; box-shadow: .18cqw .18cqw .2cqw rgba(0,0,0,.25); font-size: 2.7cqw; transition: transform .2s, opacity .2s; }
+.memory-card:hover { transform: translateY(-.15cqw); }.memory-card.shown { background: #f4ffe7; color: #2a8b3b; }.memory-card.matched { opacity: .48; }
+.final-flight { position: absolute; inset: 0; background: #304ec2 url('https://www.figma.com/api/mcp/asset/777d9499-681c-4b12-bc52-251fb77d95e9') center/cover; }
+.final-flight > img { position: absolute; left: 26%; top: 12%; width: 48%; height: 64%; object-fit: contain; }
+.final-message { position: absolute; inset: 0; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.final-message h1 { margin: 0; color: #ffff00; font-size: 3cqw; }.final-message p { margin: 0 0 2cqw; font-size: 2.5cqw; font-weight: 700; }
+@media (max-aspect-ratio: 4/5) { .stage-shell { align-items: center; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
